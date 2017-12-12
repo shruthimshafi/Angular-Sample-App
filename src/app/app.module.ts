@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { fakeBackendProvider } from './fake-backend';
+
 // import { HomeComponent } from './body/home/home.component';
 // import { RegistrationformComponent } from './body/registrationform/registrationform.component';
 import { AppRoutingModule } from './/app-routing.module';
@@ -13,7 +15,10 @@ import { AdService} from './ad.service';
 import { LoginComponent } from './login/login.component';
 // import { MyDataService } from './my-data.service';
 // import { DataService } from './data.service';
-
+import { AuthenticationService } from './service/authentication.service';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions } from '@angular/http';
+ 
 // import { AnimationComponent } from './body/animation/animation.component';
 
 @NgModule({
@@ -31,9 +36,11 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
   ],
-  providers: [AdService],
+  providers: [AdService, AuthenticationService, MockBackend,
+    BaseRequestOptions,fakeBackendProvider],
   bootstrap: [AppComponent],
   entryComponents: [JobAdComponent, JobProfileComponent]
 })
