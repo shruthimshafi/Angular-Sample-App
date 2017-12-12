@@ -1,0 +1,17 @@
+.custom_margin{
+    /* margin:0px 0px 0px 0px; */
+    padding-left: 100px;
+    padding-right:100px;
+    padding-top: 50px;
+    padding-bottom:50px;
+    font-size: 12px;
+    border: 2px solid grey;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+   }
+ 
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+   } 

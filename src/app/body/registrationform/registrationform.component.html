@@ -1,0 +1,105 @@
+<div class="custom_margin">
+<h2> Registration Form</h2>
+
+<form [formGroup]="RegistrationForm" (ngSubmit)="onSubmit()" nonvalidate>
+
+  <div class="form-group">
+      <label class="center-block">Name:
+        <input class="form-control" formControlName="name" required >
+      </label>
+      </div>
+    
+  <div *ngIf="RegistrationForm.controls.name.invalid && (RegistrationForm.controls.name.dirty || RegistrationForm.controls.name.touched)"class="alert alert-danger">
+ <div *ngIf="RegistrationForm.controls.name.errors.required">
+  <p> Name is required.</p>
+ </div>
+ <div *ngIf="RegistrationForm.controls.name.errors.minlength">
+   <p>Name must be at least 4 characters long.</p>
+ </div>
+ <div *ngIf="RegistrationForm.controls.name.errors.pattern">
+    <p>Only Alphabets allowed.</p>
+  </div>
+</div>
+
+<div formGroupName="address" class="well well-lg">
+<div class="form-group">
+  <label class="center-block">Street:
+      <input class="form-control" formControlName="street">
+  </label>  
+</div>
+
+
+<div class="form-group">
+    <label class="center-block">City:
+        <input class="form-control" formControlName="city">
+    </label>  
+  </div>
+
+  <div class="form-group">
+      <label class="center-block">State:
+          <input class="form-control" formControlName="state">
+      </label>  
+    </div>
+    <div class="form-group">
+        <label class="center-block">Zip Code:
+            <input class="form-control" formControlName="zipcode">
+        </label>  
+      </div>
+      </div>
+
+      <div class="form-group">
+        <label class="center-block">Email:
+          <input class="form-control" formControlName="email" required>
+        </label>
+      </div>
+      <div *ngIf="RegistrationForm.controls.email.invalid && (RegistrationForm.controls.email.dirty || RegistrationForm.controls.email.touched)"class="alert alert-danger">
+          <div *ngIf="RegistrationForm.controls.email.errors.required">
+           <p> Email is required.</p>
+          </div>
+          <div *ngIf="RegistrationForm.controls.email.errors.pattern">
+            <p>Incorrect Format.</p>
+          </div>
+         </div>
+
+      <div class="form-group">
+        <label class="center-block">Branch:
+          <select class="form-control" formControlName="branch" required>
+            <option *ngFor="let br of branch" [value]=br>{{br}}</option>
+            </select>
+        </label>
+      </div>
+      <div *ngIf="RegistrationForm.controls.branch.invalid && (RegistrationForm.controls.branch.dirty || RegistrationForm.controls.branch.touched)"class="alert alert-danger">
+          <div *ngIf="RegistrationForm.controls.branch.errors.required">
+           <p>Please Select a Branch</p>
+          </div>
+         </div>
+
+      <!-- <div class="form-group radio">
+        <h4>Gender:</h4>
+        <label class="center-block">
+          <input type="radio" formControlName="gender" value="male" required >Male
+        </label>
+        <label class="center-block">
+          <input type="radio" formControlName="gender" value="female" required>Female
+        </label>
+      </div>
+      <div *ngIf="RegistrationForm.controls.gender.invalid && (RegistrationForm.controls.gender.dirty || RegistrationForm.controls.gender.touched)"class="alert alert-danger">
+          <div *ngIf="RegistrationForm.controls.gender.errors.required">
+           <p>Please Select a Gender</p>
+          </div>
+         </div> -->
+
+      <!-- <div class="form-group">
+        <label class="center-block">
+          <input type="checkbox" formControlName="terms">I have Agreed to the Terms and Conditions
+        </label>
+      </div> -->
+
+      <div style="margin-bottom: 1em">
+          <button type="submit"
+                  [disabled]="RegistrationForm.pristine && RegistrationForm.invalid" class="btn btn-success">Save</button> &nbsp;
+          <button type="reset" (click)="revert()"
+                  [disabled]="RegistrationForm.pristine" class="btn btn-danger">Revert</button>
+        </div>
+</form>
+</div>
